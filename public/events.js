@@ -12,7 +12,7 @@ socket.emit('ready');
 //
 
 //
-socket.on('countdown'. function (animalName) {
+socket.on('countdown',function (animalName) {
   //redirect to countdown view
 });
 //
