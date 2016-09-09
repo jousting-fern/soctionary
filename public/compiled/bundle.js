@@ -28092,9 +28092,33 @@
 		}
 	
 		_createClass(Result, [{
+			key: 'componentWillMount',
+			value: function componentWillMount() {
+	
+				// listen to switch to readyView
+				socket.on('readyView', function () {
+					window.location.href = '#/ready';
+				});
+			}
+		}, {
+			key: 'sendPlayAgain',
+			value: function sendPlayAgain() {
+				// emit event to server
+				socket.emit('again');
+			}
+		}, {
 			key: 'render',
 			value: function render() {
-				return _react2.default.createElement('div', null);
+				return _react2.default.createElement(
+					'div',
+					null,
+					_react2.default.createElement(
+						'div',
+						null,
+						'We\'re all winners.'
+					),
+					_react2.default.createElement('button', { value: 'Just kidding, play again', onClick: this.sendPlayAgain })
+				);
 			}
 		}]);
 	
@@ -28142,15 +28166,24 @@
 		_createClass(Vote, [{
 			key: 'componentWillMount',
 			value: function componentWillMount() {
-				socket.on('vote', function (images) {
-					//redirect to voting view
-					// images is an array of JSON.stringify(canvas) objects to vote on
-					this.renderDrawings(images);
+	
+				// removed this for the one below b/c we're already on vote :. listener should not be waiting for vote 
+				// socket.on('vote', function (images) {
+				//   // redirect to voting view
+				//   // images is an array of JSON.stringify(canvas) objects to vote on
+				//   this.renderDrawings(images);
+				// }.bind(this));
+	
+				// listen for emit when we redirect to results view 
+				socket.on('results', function () {
+					window.location.href = '#/result';
 				});
 			}
 		}, {
 			key: 'renderDrawings',
 			value: function renderDrawings(arr) {
+	
+				// rasterize each image from vector blob and append to page
 				arr.forEach(function (pic) {
 	
 					canvas.loadFromJSON(pic, function (blob) {
@@ -28158,11 +28191,16 @@
 						image.src = blob.toDataUrl("image/png");
 						document.getElementById('vote').appendChild(image);
 	
+						// <button value="Vote" onClick={this.chooseVote}></button>
+	
 						//place image on canvas/page appropriately
 					});
 					//canvas.renderAll.bind(canvas)
 				});
 			}
+		}, {
+			key: 'chooseVote',
+			value: function chooseVote() {}
 		}, {
 			key: 'render',
 			value: function render() {
