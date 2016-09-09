@@ -79,6 +79,6 @@ io.on('connection', function(socket) {
 
 });
 
-http.listen(8080, function(data) {
+http.listen(3000, function(data) {
   console.log('server starting...');
 });
