@@ -12,6 +12,7 @@ app.use(express.static('public'));
 app.use('/static', express.static(__dirname + '/../public'));
 app.use('/static', express.static(__dirname + '/../public/node_modules/fabric/dist'));
 
+<<<<<<< HEAD
 var animals = [
   'penguin',
   'turtle',
@@ -41,6 +42,10 @@ var animals = [
   'ant',
   'caterpillar'
 ];
+ 
+=======
+var animals = ['Pikachu'];
+>>>>>>> 6b72c630102f3b7baa52ea80abd26a606e7ac544
 
 var clients = {};
 var rounds = 0;
