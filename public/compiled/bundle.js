@@ -28001,7 +28001,7 @@
 	
 			_this.state = {
 				drawCanvas: false,
-				countdown: 4
+				remainingTime: 4
 			};
 			return _this;
 		}
@@ -28009,7 +28009,7 @@
 		_createClass(Drawing, [{
 			key: "componentWillMount",
 			value: function componentWillMount() {
-	
+				console.log('countdown componentWillMount: ' + this.state.myCountDown);
 				// create canvas
 				var image = null;
 	
@@ -28040,14 +28040,36 @@
 					window.location.href = '#/vote';
 				});
 	
-				this.setState({
-					countdown: setInterval(function () {}.bind(this), 1000)
-				});
+				// start the countdown
+				// this.countDown();
 			}
 		}, {
-			key: "countdown",
-			value: function countdown() {
-				document.getElementsByClassName('countdown')[0].style.display = 'none';
+			key: "componentDidMount",
+			value: function componentDidMount() {
+				console.log('countdown started...');
+				this.timer = setInterval(this.tick.bind(this), 1000);
+			}
+		}, {
+			key: "componentWillUnmount",
+			value: function componentWillUnmount() {
+				clearInterval(this.timer);
+			}
+		}, {
+			key: "tick",
+			value: function tick() {
+				this.setState({ remainingTime: this.state.remainingTime - 1 });
+				console.log('tick: ' + this.state.remainingTime);
+				if (this.state.remainingTime <= 1) {
+					clearInterval(this.timer);
+					this.setState({ remainingTime: 'Draw!' });
+					setTimeout(this.hideCountDown.bind(this), 1000);
+					;
+				}
+			}
+		}, {
+			key: "hideCountDown",
+			value: function hideCountDown() {
+				document.getElementsByClassName('drawingCountdown')[0].style.display = 'none';
 			}
 		}, {
 			key: "render",
@@ -28057,15 +28079,21 @@
 					null,
 					_react2.default.createElement(
 						"div",
-						{ className: "prompt" },
-						"Draw a ",
-						window.Animal
-					),
-					_react2.default.createElement(
-						"div",
-						{ className: "countdown" },
-						" Start drawing in ",
-						this.state.countdown ? this.countdown : this.state.countdown
+						{ className: "drawingCountdown" },
+						_react2.default.createElement(
+							"div",
+							{ className: "prompt" },
+							"Draw a ",
+							window.Animal,
+							" in..."
+						),
+						_react2.default.createElement(
+							"div",
+							{ className: "countdown" },
+							" ",
+							this.state.remainingTime,
+							" "
+						)
 					),
 					this.state.drawCanvas ? _react2.default.createElement(Board, null) : null
 				);
