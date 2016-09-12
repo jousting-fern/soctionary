@@ -43,7 +43,7 @@ var animals = [
 ];
 
 var clients = {};
-var rounds = 0;
+var rounds = 100;
 var queried = false;
 var images;
 
