@@ -28,29 +28,53 @@ export default class Result extends React.Component {
 
 
 			var images = [];
-			data.images.forEach( function(blob) {
-				var canvas = new fabric.Canvas('test')
-				// images.push(blob.vectorDrawing);
-				canvas.loadFromJSON( blob.vectorDrawing, function() {
-			  		// canvas.renderAll.bind(canvas)
-			  		// var blob = JSON.parse(json);
-			  		console.log(blob);
-			  		var image = canvas.toDataURL({
-							format: 'image/png',
-							multiplier: 0.25,
-							width: 375,
-						  height: 375
-						});
-			  		canvas.clear();
-					info.push({
-						id: 'd' + info.length,
-						name:blob.playerName,
-						votes:blob.voteCount || 0,
-						image: image
-						//wins:blob.roundWins 
+			
+			for (var key in data.images) {
+					var canvas = new fabric.Canvas('test')
+					// images.push(blob.vectorDrawing);
+					canvas.loadFromJSON( data.images[key].vectorDrawing, function() {
+				  		// canvas.renderAll.bind(canvas)
+				  		// var blob = JSON.parse(json);
+				  		console.log(data.images[key]);
+				  		var image = canvas.toDataURL({
+								format: 'image/png',
+								multiplier: 0.25,
+								width: 375,
+							  height: 375
+							});
+				  		canvas.clear();
+						info.push({
+							id: 'd' + info.length,
+							name:data.images[key].playerName,
+							votes:data.images[key].voteCount || 0,
+							image: image
+							//wins:blob.roundWins 
+						})
 					})
-				})
-			})
+			}
+			// data.images.forEach( function(blob) {
+			// 	var canvas = new fabric.Canvas('test')
+			// 	// images.push(blob.vectorDrawing);
+			// 	canvas.loadFromJSON( blob.vectorDrawing, function() {
+			//   		// canvas.renderAll.bind(canvas)
+			//   		// var blob = JSON.parse(json);
+			//   		console.log(blob);
+			//   		var image = canvas.toDataURL({
+			// 				format: 'image/png',
+			// 				multiplier: 0.25,
+			// 				width: 375,
+			// 			  height: 375
+			// 			});
+			//   		canvas.clear();
+			// 		info.push({
+			// 			id: 'd' + info.length,
+			// 			name:blob.playerName,
+			// 			votes:blob.voteCount || 0,
+			// 			image: image
+			// 			//wins:blob.roundWins 
+			// 		})
+			// 	})
+			// })
 			info.push({
 				id: 'again',
 				goAgain:this.goAgain

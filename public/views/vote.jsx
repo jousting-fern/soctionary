@@ -49,8 +49,10 @@ export default class Vote extends React.Component {
 			this.setState({remainingTime: time + 1});
 			var canvas = new fabric.Canvas('test')
 			//var images = [];
-			data.images.forEach( function(blob) {
-			  	canvas.loadFromJSON( blob.vectorDrawing, function() {
+			console.log(data);
+			
+			for (var key in data.images) {
+			  	canvas.loadFromJSON( data.images[key].vectorDrawing, function() {
 			  		//used to get data url for image to render on voting view
 			  		var image = canvas.toDataURL({
 							format: 'image/png',
@@ -61,12 +63,31 @@ export default class Vote extends React.Component {
 			  		//info array is a state that get passed into the Select component that will render the pictures
 					info.push({
 						id: 'd' + info.length,
-						name:blob.playerName, 
+						name: data.images[key].playerName, 
 						image: image
 					})
 			  		canvas.clear();
 			  	})
-			})
+			}
+			
+			// data.images.forEach( function(blob) {
+			//   	canvas.loadFromJSON( blob.vectorDrawing, function() {
+			//   		//used to get data url for image to render on voting view
+			//   		var image = canvas.toDataURL({
+			// 				format: 'image/png',
+			// 				multiplier: 0.25,
+			// 				width: 375,
+			// 			  height: 375
+			// 			});
+			//   		//info array is a state that get passed into the Select component that will render the pictures
+			// 		info.push({
+			// 			id: 'd' + info.length,
+			// 			name:blob.playerName, 
+			// 			image: image
+			// 		})
+			//   		canvas.clear();
+			//   	})
+			// })
  			console.log('info', info);
  			//Used to pass info to Select component
 			this.setState({
