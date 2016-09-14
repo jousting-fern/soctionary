@@ -108,7 +108,8 @@ io.on('connection', function(socket) {
       console.log('time', time);
       io.to(room).emit('vote', {
         images: rooms[room].round,
-        time: time
+        time: time,
+        playerName: socket.name
       });
       setTimeout(function () {
         io.to(room).emit('countVotes');
