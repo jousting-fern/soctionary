@@ -16,21 +16,21 @@ var animals = [
   'frog',
   'monkey',
   'shark',
-  'fish',
-  'bird',
+  'fishy',
+  'birdie',
   'elephant',
   'dolphin',
-  'dog',
-  'horse',
+  'puppy',
+  'horsey',
   'bunny',
   'snail',
   'mouse',
   'seal',
-  'pig',
+  'piggy',
   'cow',
   'turkey',
   'camel',
-  'cat',
+  'kitty',
   'rhino',
   'bear',
   'spider',
@@ -40,7 +40,91 @@ var animals = [
   'anteater',
   'platypus',
   'chicken',
-  ''
+  'hippo',
+  'flamingo',
+  'snake',
+  'iguana',
+  'alligator',
+  'starfish',
+  'armadillo',
+  'octopus',
+  'sheep',
+  'chupacabra',
+  'kangaroo',
+  'beaver',
+  'crab',
+  'manatee',
+  'deer',
+  'whale',
+  'wolf',
+  'squirrel',
+  'skunk',
+  'lion',
+  'giraffe',
+  'buffalo',
+  'bat',
+  'bee',
+  'beetle',
+  'owl',
+  'ostrich',
+  'hummingbird',
+  'worm',
+  'jellyfish',
+  't-rex',
+  'slug',
+  'dragon',
+  'goat',
+  'ram',
+  'stingray',
+  'human',
+  'narwhal',
+  'shrimp',
+  'lobster',
+  'eagle',
+  'tiger',
+  'clam',
+  'squid',
+  'kiwi',
+  'walrus',
+  'peacock',
+  'koala',
+  'duck',
+  'goose',
+  'stegosaurus',
+  'liger',
+  'ferret',
+  'warthog',
+  'swan',
+  'hamster',
+  'fly',
+  'piranha',
+  'unicorn',
+  'cyclops',
+  'ghost',
+  'griffin',
+  'sphinx',
+  'cobra',
+  'werewolf',
+  'pegasus',
+  'harpy',
+  'gorilla',
+  'otter',
+  'grasshopper',
+  'moose',
+  'sea cucumber',
+  'eel',
+  'weasel',
+  'angler fish',
+  'minotaur',
+  'wolverine',
+  'mantis',
+  'loch ness monster',
+  'kraken',
+  'yeti',
+  'toucan',
+  'seahorse',
+  'clownfish',
+  
 ];
 
 var images;
@@ -96,9 +180,6 @@ io.on('connection', function(socket) {
           io.to(room).emit('end');
         }, 5000);
       }, 4000);
-      setTimeout(function () {
-        rooms[room].state = false;
-      }, 30000);
     }
   });
   
@@ -139,7 +220,10 @@ io.on('connection', function(socket) {
       }
     }
     if (rooms[room].state === 'voting') {
-      rooms[room].state = 'result';
+      setTimeout(function () {
+        rooms[room].state = 'result';
+      }, 100);
+      
       if (name) {
         rooms[room].round[name].votes++;
       }
@@ -159,7 +243,7 @@ io.on('connection', function(socket) {
     if (rooms[room].state = 'result') {
       rooms[room].state = 'ready';
       rooms[room].round = {};
-      io.emit('readyView', room);
+      io.to(room).emit('readyView', room);
     }
   });
 
