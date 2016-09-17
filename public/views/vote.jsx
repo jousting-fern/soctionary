@@ -43,6 +43,7 @@ export default class Vote extends React.Component {
 		var info = [];
 
 		socket.on('vote', function (data) {
+			console.log('got vote data: ', data)
 			//time for countdown
 			var time = data.time;
 			//sets up countdown time passed from server

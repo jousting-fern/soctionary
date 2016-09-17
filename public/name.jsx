@@ -12,7 +12,8 @@ export default class Name extends React.Component {
 	}
 
 	componentWillMount() {
-		socket.on('readyView', function () {
+		socket.on('readyView', function (room) {
+			console.log('got room: ', room);
 			window.location.href = '#/ready'
 		});
 	} 
