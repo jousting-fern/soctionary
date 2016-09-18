@@ -190,7 +190,10 @@ io.on('connection', function(socket) {
       }
     }
     if (rooms[room].state === 'drawing') {
-      rooms[room].state = 'voting';
+      setTimeout(function () {
+        rooms[room].state = 'voting';
+      }, 100);
+      
       rooms[room].round[socket.name] = {
         votes: 0,
         vectorDrawing: data
@@ -247,7 +250,7 @@ io.on('connection', function(socket) {
     }
   });
 
-  socket.on('disconnect', function (something) {
+  socket.on('disconnect', function () {
     console.log('A SOCKET DISCONNECTED!');
     for (var key in socket.rooms) {
       if (key.length === 5) {
