@@ -27863,7 +27863,8 @@
 		}, {
 			key: 'componentWillMount',
 			value: function componentWillMount() {
-				socket.on('readyView', function () {
+				socket.on('readyView', function (room) {
+					console.log('got room: ', room);
 					window.location.href = '#/ready';
 				});
 			}
@@ -27943,6 +27944,7 @@
 			key: 'componentWillMount',
 			value: function componentWillMount() {
 				socket.on('countdown', function (animalName) {
+					console.log('got animalname: ', animalName);
 					window.Animal = animalName;
 					window.location.href = '#/drawing';
 					//redirect to countdown view
@@ -28216,6 +28218,7 @@
 	
 				var info = [];
 				socket.on('results', function (data) {
+					console.log('got results: ', data);
 					//time for countdown
 					var time = data.time;
 	
@@ -28397,6 +28400,7 @@
 				var info = [];
 	
 				socket.on('vote', function (data) {
+					console.log('got vote data: ', data);
 					//time for countdown
 					var time = data.time;
 					//sets up countdown time passed from server

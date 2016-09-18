@@ -23,6 +23,7 @@ export default class Result extends React.Component {
 
 		var info = [];
 		socket.on('results', function (data) {
+			console.log('got results: ', data);
 			//time for countdown
 			var time = data.time;
 
