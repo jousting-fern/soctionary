@@ -43,6 +43,7 @@ export default class Vote extends React.Component {
 		var info = [];
 
 		socket.on('vote', function (data) {
+			console.log('got vote data: ', data)
 			//time for countdown
 			var time = data.time;
 			//sets up countdown time passed from server
@@ -63,7 +64,7 @@ export default class Vote extends React.Component {
 			  		//info array is a state that get passed into the Select component that will render the pictures
 					info.push({
 						id: 'd' + info.length,
-						name: data.images[key].playerName, 
+						name: key, 
 						image: image
 					})
 			  		canvas.clear();
@@ -103,6 +104,7 @@ export default class Vote extends React.Component {
     	setTimeout(this.tick.bind(this),0);
     	document.getElementsByClassName('votingCountdown')[0].style.display = 'inline';
   	   document.getElementsByClassName('waitTime')[0].style.display = 'none';
+  	   socket.removeListener('vote')
       
 		}.bind(this));
 
