@@ -143,7 +143,7 @@ io.on('connection', function(socket) {
       do {
         var room = '';
         for (var i = 0; i < 5; i++) {
-          console.log(alph[Math.floor(Math.random() * 26)])
+          //console.log(alph[Math.floor(Math.random() * 26)])
           room += alph[Math.floor(Math.random() * 26)];
           console.log('room', room);
         }
@@ -157,8 +157,8 @@ io.on('connection', function(socket) {
       rooms[room].round = {};
       socket.join(room);
     }
-    console.log(room);
-    console.log(socket);
+    //console.log(room);
+    //console.log(socket);
     rooms[room].userCount ? rooms[room].userCount++ : rooms[room].userCount = 1;
     rooms[room].state = 'ready';
     socket.emit('readyView', room);
@@ -189,20 +189,21 @@ io.on('connection', function(socket) {
         var room = key;
       }
     }
+    rooms[room].round[socket.name] = {
+      votes: 0,
+      vectorDrawing: data
+    };
     if (rooms[room].state === 'drawing') {
       setTimeout(function () {
         rooms[room].state = 'voting';
       }, 100);
       
-      rooms[room].round[socket.name] = {
-        votes: 0,
-        vectorDrawing: data
-      };
       
       setTimeout(function () {
-        console.log('DATA HERE IS', rooms[room]);
+        //console.log('DATA HERE IS', rooms[room]);
         var time = Math.max(15);
-        console.log('time', time);
+        //console.log('time', time);
+        console.log('vote pictures are', rooms[room].round)
         io.to(room).emit('vote', {
           images: rooms[room].round,
           time: time,
@@ -232,6 +233,7 @@ io.on('connection', function(socket) {
       }
           
       setTimeout(function () {
+        console.log('pictures are', rooms[room].round)
         socket.emit('results', rooms[room].round);
       }, 1000);
     }

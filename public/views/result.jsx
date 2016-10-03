@@ -30,13 +30,12 @@ export default class Result extends React.Component {
 
 			var images = [];
 			
-			for (var key in data.images) {
+			for (var key in data) {
 					var canvas = new fabric.Canvas('test')
 					// images.push(blob.vectorDrawing);
-					canvas.loadFromJSON( data.images[key].vectorDrawing, function() {
+					canvas.loadFromJSON( data[key].vectorDrawing, function() {
 				  		// canvas.renderAll.bind(canvas)
 				  		// var blob = JSON.parse(json);
-				  		console.log(data.images[key]);
 				  		var image = canvas.toDataURL({
 								format: 'image/png',
 								multiplier: 0.25,
@@ -46,8 +45,8 @@ export default class Result extends React.Component {
 				  		canvas.clear();
 						info.push({
 							id: 'd' + info.length,
-							name:data.images[key].playerName,
-							votes:data.images[key].voteCount || 0,
+							name:key,
+							votes:data[key].votes || 0,
 							image: image
 							//wins:blob.roundWins 
 						})
