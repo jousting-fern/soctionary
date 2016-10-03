@@ -1,0 +1,295 @@
+.header {
+    height: 110px;
+    background: cyan;
+    border-bottom: 20px solid #00A6A6;
+}
+
+.canvas-container {
+  background-color: white;
+  border: 1px solid #000;
+  -moz-box-shadow: 0 0 5px 5px #888;
+  -webkit-box-shadow: 0 0 5px 5px#888;
+  box-shadow: 0px 30px 100px 0px rgba(0, 0, 0, 0.14);
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+.fake-canvas {
+    min-height: 800px;
+    width: 800px;
+    border: 1px solid #f1f1f1;
+    margin: 0 auto;
+    margin-top: 60px;
+    -moz-box-shadow: 0 0 5px 5px #888;
+    -webkit-box-shadow: 0 0 5px 5px#888;
+    box-shadow: 0px 30px 100px 0px rgba(0, 0, 0, 0.14);
+    padding: 0px;
+}
+
+.logo img {
+    width: 160px;
+}
+
+img.animated-logo {
+    margin-right: -8px;
+}
+
+input#player {
+    font-size: 54px;
+    font-weight: 900;
+}
+
+.container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.user-register {
+    margin-top: 50px;
+    width: 90%;
+    margin: 0 auto;
+    padding: 32px 40px;
+    border-radius: 30px;
+    background: white;
+}
+
+input:not([type]), input[type=text], input[type=password], input[type=email], input[type=url], input[type=time], input[type=date], input[type=datetime], input[type=datetime-local], input[type=tel], input[type=number], input[type=search], textarea.materialize-textarea {
+    height: 7rem;
+}
+
+.container {
+    font-size: 10px;
+    text-align: center;
+    color: #fff;
+}
+
+
+footer.page-footer {
+    margin-top: 0px;
+    padding-top: 5px;
+    background-color: #ee6e73;
+}
+
+main {
+    flex: 1 0 auto;
+    background: #edffff;
+}
+
+span.footer-post {
+    font-weight: 900;
+}
+
+button.btn.waves-effect.waves-light {
+    text-transform: lowercase;
+}
+
+input#player::-webkit-input-placeholder {
+    font-size: 30px;
+    margin-top: 44px;
+    font-weight: 100;
+}
+
+.logo img {
+    width: 311px;
+}
+
+.logo {
+    text-align: center;
+}
+
+.readyScreen {
+    text-align: center;
+}
+
+.readyScreen h1 {
+    font-weight: 900;
+}
+
+.mainbody {
+    top: 110px;
+    bottom: 75px;
+}
+
+div#app {
+    min-height: 380px;
+}
+
+.readyScreen.valign {
+    margin: 0 auto;
+}
+
+.drawingCountdown {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.countdown {
+  font-size: 150px;
+  font-weight: 900;
+  margin: 0 auto;
+}
+
+span.givenAnimal {
+    font-weight: 900;
+    font-size: 40px;
+    padding:10px;
+}
+
+.drawingWrapper {
+  margin: 0 auto;
+  margin-top: 20px;
+
+}
+
+
+.row .voteInstance {
+    width: 50%;
+    margin-left: auto;
+    left: auto;
+    right: auto;
+    float: left;
+}
+
+.row .voted {
+    width: 50%;
+    margin-left: auto;
+    left: auto;
+    right: auto;
+    float: left;
+    padding: 10px;
+    text-align: center;
+}
+
+.waitTime {
+  font-size: 30px;
+  width: 80%;
+  text-align: center;
+}
+
+.waitTime img {
+  width: 250px;
+  text-align: center;
+}
+.row.HR {
+    margin-bottom: 3px;
+    margin-top: 3px;
+}
+
+.loadingText {
+  font-weight: 100;
+  font-style: italic;
+  font-size: 15px;
+}
+
+.voteInstance img {
+    background: #fff;
+    margin-bottom: 10px;
+    border: 1px solid #000;
+}
+
+.resultInstance img {
+    width: 100%;
+    margin-left: auto;
+    left: auto;
+    right: auto;
+}
+
+.resultInstance {
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+div#vote {
+    margin-top: 40px;
+}
+
+.resultInstance img {
+    background: white;
+    border: 1px solid #e0e0e0;
+}
+
+.voteInstance {
+    padding: 10px;
+}
+
+span.userName {
+    font-weight: bold;
+}
+
+span.numVotes {
+    font-weight: bold;
+}
+
+.resultInstance p {
+    margin-bottom: 0px;
+}
+
+div#vote {
+    margin: 0 auto;
+    margin-top: 45px;
+}
+
+.votingCountdown.valign {
+    text-align: center;
+}
+
+.votePrompt {
+    font-size: 20px;
+    margin-top: 5px;
+}
+
+.voteCountdown {
+  font-size: 50px;
+  color: #00A6A6;
+}
+
+button.btn.waves-effect.waves-light.playAgain {
+    font-size: 17px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+.voted img {
+    outline: none;
+    border-color: gold;
+    /* box-shadow: 0 -12px 0px gold; */
+    -webkit-box-shadow: inset 0 0 10px gold;
+    -moz-box-shadow: inset 0 0 10px gold;
+    box-shadow: inset 0 0 10px gold;
+    background: white;
+}
+
+.voteInstance {
+    text-align: center;
+}
+
+h1.results {
+    font-size: 35px;
+    text-align: center;
+    font-weight: bold;
+    color: #00a6a6;
+}
+
+.logo img {
+   margin-left: -10px;
+   width: 265px;
+   margin-top: 7px;
+}
+
+/*
+.votingCountdown.valign {
+    background: white;
+    width: 100%;
+    position: fixed;
+    margin-top: -45px;
+    opacity: .4;
+}*/
